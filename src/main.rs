@@ -1,31 +1,27 @@
+use commands::run_command;
 use dotenv::dotenv;
 use serenity::{
     async_trait,
-    model::{channel::Message, gateway::Ready},
+    model::{channel::Message, gateway::Ready, prelude::Activity},
     prelude::*,
 };
 use std::env;
 
-const TEST_MESSAGE: &str = "
-    This discord bot is written in Rust.
-";
-
-const TEST_COMMAND: &str = "!rust";
+mod commands;
+mod helper;
 
 struct Handler;
 
 #[async_trait]
 impl EventHandler for Handler {
     async fn message(&self, context: Context, message: Message) {
-        if message.content == TEST_COMMAND {
-            if let Err(why) = message.channel_id.say(&context.http, TEST_MESSAGE).await {
-                println!("Error sending message: {:?}", why)
-            }
-        }
+        run_command(context, message).await;
     }
 
-    async fn ready(&self, _: Context, ready: Ready) {
+    async fn ready(&self, context: Context, ready: Ready) {
         println!("{} is connected!", ready.user.name);
+
+        context.set_activity(Activity::listening("to r!help")).await;
     }
 }
 
