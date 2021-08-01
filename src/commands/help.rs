@@ -8,7 +8,8 @@ pub async fn help(context: Context, message: Message) {
         e.title("RustyBot Help")
           .field("r!help", "Shows this message", false)
           .field("r!ping", "Replies with pong", false)
-          .field("r!nick", "Changes nicknamee", false)
+          .field("r!nick", "Changes nickname", false)
+          .field("r!author", "Shows the bot author", false)
       });
       m
     })

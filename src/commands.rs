@@ -2,11 +2,12 @@ use serenity::{client::Context, model::channel::Message};
 
 use crate::helper::send_message;
 
-use crate::commands::help::help;
-use crate::commands::ping::ping;
-
+use self::author::author;
+use self::help::help;
 use self::nick::nick;
+use self::ping::ping;
 
+mod author;
 mod help;
 mod nick;
 mod ping;
@@ -29,6 +30,7 @@ pub async fn run_command(context: Context, message: Message) {
 
   args.remove(0);
   match command {
+    "author" => author(context, message).await,
     "ping" => ping(context, message).await,
     "nick" => nick(context, message, args).await,
     "help" => help(context, message).await,
