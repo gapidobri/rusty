@@ -6,11 +6,13 @@ use self::author::author;
 use self::help::help;
 use self::nick::nick;
 use self::ping::ping;
+use self::source::source;
 
 mod author;
 mod help;
 mod nick;
 mod ping;
+mod source;
 
 const PREFIX: &str = "r!";
 
@@ -34,6 +36,7 @@ pub async fn run_command(context: Context, message: Message) {
     "ping" => ping(context, message).await,
     "nick" => nick(context, message, args).await,
     "help" => help(context, message).await,
+    "source" => source(context, message).await,
     _ => no_command(context, message).await,
   }
 }

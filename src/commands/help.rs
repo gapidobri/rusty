@@ -10,6 +10,7 @@ pub async fn help(context: Context, message: Message) {
           .field("r!ping", "Replies with pong", false)
           .field("r!nick", "Changes nickname", false)
           .field("r!author", "Shows the bot author", false)
+          .field("r!source", "Shows the link to source code", false)
       });
       m
     })
