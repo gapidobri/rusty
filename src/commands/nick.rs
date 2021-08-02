@@ -36,6 +36,6 @@ async fn change_nickame(context: Context, message: Message, user_id: UserId, nic
     .await
   {
     println!("Error editing members nickname: {:?}", why);
-    send_message(context, message.channel_id, "I can't change your nickname").await;
+    send_message(context, message.channel_id, "I can't change the nickname").await;
   }
 }
