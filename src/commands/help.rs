@@ -12,6 +12,7 @@ pub async fn help(context: Context, message: Message) {
           .field("r!author", "Shows the bot author", false)
           .field("r!source", "Shows the link to source code", false)
           .field("r!roll", "Provides you with a link to rickroll", false)
+          .field("r!say", "Repeats after you", false)
       });
       m
     })

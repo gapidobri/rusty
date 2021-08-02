@@ -7,6 +7,7 @@ use self::help::help;
 use self::nick::nick;
 use self::ping::ping;
 use self::roll::roll;
+use self::say::say;
 use self::source::source;
 
 mod author;
@@ -14,6 +15,7 @@ mod help;
 mod nick;
 mod ping;
 mod roll;
+mod say;
 mod source;
 
 const PREFIX: &str = "r!";
@@ -22,7 +24,7 @@ const PREFIX: &str = "r!";
 pub async fn run_command(context: Context, message: Message) {
   let content = message.clone().content;
 
-  if content.len() < PREFIX.len() {
+  if message.author.bot || content.len() < PREFIX.len() {
     return;
   }
   let prefix = &content[..PREFIX.len()];
@@ -39,6 +41,7 @@ pub async fn run_command(context: Context, message: Message) {
     "nick" => nick(context, message, args).await,
     "help" => help(context, message).await,
     "roll" => roll(context, message).await,
+    "say" => say(context, message, args).await,
     "source" => source(context, message).await,
     _ => no_command(context, message).await,
   }
