@@ -12,11 +12,6 @@ mod helper;
 
 struct Handler;
 
-// Hacktoberfest 2021 - #1
-// Hacktoberfest 2021 - #2
-// Hacktoberfest 2021 - #3
-// Hacktoberfest 2021 - #4
-
 #[async_trait]
 impl EventHandler for Handler {
     async fn message(&self, context: Context, message: Message) {
