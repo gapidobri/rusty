@@ -13,6 +13,7 @@ mod helper;
 struct Handler;
 
 // Hacktoberfest 2021 - #1
+// Hacktoberfest 2021 - #2
 
 #[async_trait]
 impl EventHandler for Handler {
