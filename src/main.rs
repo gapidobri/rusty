@@ -12,6 +12,8 @@ mod helper;
 
 struct Handler;
 
+// Hacktoberfest 2021 - #1
+
 #[async_trait]
 impl EventHandler for Handler {
     async fn message(&self, context: Context, message: Message) {
@@ -20,7 +22,6 @@ impl EventHandler for Handler {
 
     async fn ready(&self, context: Context, ready: Ready) {
         println!("{} is connected!", ready.user.name);
-
         context.set_activity(Activity::listening("to r!help")).await;
     }
 }
